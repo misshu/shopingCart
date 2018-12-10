@@ -8,7 +8,8 @@
   </div>
 </template>
 <script>
-export default{
+export default {
+  name: 'shop-info',
   computed: {
     cartInfos () {
       return this.$store.getters.getInfos

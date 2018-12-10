@@ -24,6 +24,7 @@
 </template>
 <script>
 export default {
+  name: 'shop-list',
   data () {
     return {
       shop_list: [
