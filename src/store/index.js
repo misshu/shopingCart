@@ -4,7 +4,7 @@ import cart from './cart/'
 
 Vue.use(Vuex)
 
-module.export = new Vuex.Store({
+export default new Vuex.Store({
   modules: {
     cart
   }

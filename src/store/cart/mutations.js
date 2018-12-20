@@ -22,6 +22,7 @@ export default {
     }
   },
   [types.CREATE_DB] (state, shop) {
+    console.log('111')
     state.cartList.push(shop)
   },
   [types.ADD_DB] (state) {
@@ -30,8 +31,8 @@ export default {
   },
   [types.REDUCE_DB] (state) {
     state.cartList[state.curIndex].num = parseInt(state.cartList[state.curIndex].num)
-    state.carList[state.curInde].num--
-    if (state.cartList[state.curindex].num === 0) {
+    state.cartList[state.curIndex].num--
+    if (state.cartList[state.curIndex].num === 0) {
       state.cartList.splice(state.curIndex, 1)
     }
   },
@@ -41,7 +42,7 @@ export default {
     state.curIndex = -1
     let list = state.cartList
     if (list.length) {
-      for (var i = 0; i < list.length; i++) {
+      for (let i = 0; i < list.length; i++) {
         if (list[i].id === id) {
           state.curIndex = i
           break

@@ -31,47 +31,51 @@ export default {
         {
           imgUrl: require('@/assets/img/chaoliu.jpg'),
           name: '潮流外套2018年秋冬新款女装韩版修身',
-          price: 120
+          price: 120,
+          id: 1,
+          num: 2
         },
         {
           imgUrl: require('@/assets/img/gexing.jpg'),
           name: '个性外套2018年秋冬新款韩版超级流行超美',
           price: 220,
-          num: 1
+          id: 2
         },
         {
           imgUrl: require('@/assets/img/kuzi.jpg'),
           name: '休闲裤子2018chic秋冬韩版潮流休闲款',
-          price: 98
+          price: 98,
+          id: 3
         },
         {
           imgUrl: require('@/assets/img/maoyi.jpg'),
           name: 'nico早秋新款毛衣女2018年新款修身保暖',
-          price: 118
+          price: 118,
+          id: 4
         }
       ]
     }
   },
   mounted () {
     let list = this.$store.state.cart.cartList
-    console.log(this)
+    console.log(list)
     for (let i = 0; i < this.shop_list.length; i++) {
-      for (var j = 0; j < list.length; i++) {
-        if (list[j].name === this.shop_list[i].name) {
+      for (let j = 0; j < list.length; j++) {
+        if (list[j].id === this.shop_list[i].id) {
           this.$set(this.shop_list, i, list[j])
           break
         }
       }
     }
-    console.log(this.shop_list[0].mun)
+    // console.log(this.shop_list[0].num)
   },
   methods: {
     add_db (shop) { // 点击菜品列表中的加号
-      let name = shop.name
+      let id = shop.id
       this.$store.dispatch('check_db', {
-        name
+        id
       })
-      if (this.$store.state.cartIndex !== 1) {
+      if (this.$store.state.cart.curIndex !== -1) {
         console.log('add_db')
         this.$store.dispatch('add_db')
       } else {
@@ -83,9 +87,9 @@ export default {
       }
     },
     reduce_db (shop) {
-      let name = shop.name
+      let id = shop.id
       this.$store.dispatch('check_db', {
-        name
+        id
       })
       shop.num = parseInt(shop.num)
       this.$store.dispatch('reduce_db')

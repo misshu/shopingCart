@@ -10,7 +10,7 @@
           <span>总价</span>
           <span>Action</span>
         </li>
-        <li v-for="(cart,index) in carList" :key="index">
+        <li v-for="(cart,index) in cartList" :key="index">
           <span>{{cart.name}}</span>
           <span>{{cart.price}}</span>
           <span>{{cart.num}}</span>
@@ -27,34 +27,49 @@
 </template>
 <script>
 export default {
+  name: 'cart-list',
+  /*
   data () {
     return {
-      carList: [
+      cartList: [
         {
           name: '潮流外套',
           price: 120,
-          num: 1
+          num: 1,
+          id: 1
         },
         {
           name: '休闲裤子',
           price: 98,
-          num: 1
+          num: 1,
+          id: 2
         }
       ]
     }
   },
+  */
   computed: {
     cartList () {
       return this.$store.getters.getCartList
     }
   },
   methods: {
+    /**
+         * 购物车加减删操作
+         * @param  {number} index 当前操作的索引
+         * @param  {string} type  对应的mutations值
+         * @param  {string} type=add_db  增加
+         * @param  {string} type=reduce_db  减少
+         * @param  {string} type=delete_db  删除
+         */
     action_cart (index, type) {
       this.$store.dispatch('update_cur_shop_status', {
         index
       })
-      this.$stroe.dispatch(type)
+      this.$store.dispatch(type)
     }
+  },
+  mounted () {
   }
 }
 </script>

@@ -12,6 +12,7 @@ import List from '@/components/shop/List/List.vue'
 import Cart from '@/components/shop/Cart/Cart.vue'
 import Info from '@/components/shop/Info/Info.vue'
 export default {
+  name: 'app',
   components: {
     List,
     Cart,

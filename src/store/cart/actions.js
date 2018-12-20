@@ -11,10 +11,10 @@ export default {
   }) => {
     commit(types.UPDATE_LOCAL)
   },
-  update_cur_shop_state: ({
+  update_cur_shop_status: ({
     commit
   }, obj) => {
-    commit(types.UPDATE_CUR_SHOP_STATE, obj)
+    commit(types.UPDATE_CUR_SHOP_STATUS, obj)
   },
   delete_db: ({
     commit
@@ -35,6 +35,17 @@ export default {
     commit
   }) => {
     commit(types.ADD_DB)
-    commit(types.UPDATe_LOCAl)
+    commit(types.UPDATE_LOCAL)
+  },
+  reduce_db: ({
+    commit
+  }) => {
+    commit(types.REDUCE_DB)
+    commit(types.UPDATE_LOCAL)
+  },
+  check_db: ({
+    commit
+  }, obj) => {
+    commit(types.CHECK_DB, obj)
   }
 }
